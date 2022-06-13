@@ -15,7 +15,7 @@
  *
  */
 
-package io.github.bonigarcia.wdm.test;
+package io.github.henriquewwf.wdm.test;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
 import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
