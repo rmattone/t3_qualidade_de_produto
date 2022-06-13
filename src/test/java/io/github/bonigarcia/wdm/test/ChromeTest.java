@@ -74,5 +74,24 @@ public class ChromeTest {
         wait.until(textToBePresentInElementLocated(By.tagName("body"),
                 "S22"));
     }
+    
+    @Test
+    // Test done by Rafael Mattone, for product quality class study purposes.
+    public void test_Rafael_Binance() {
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        driver.get("https://www.binance.com/pt-BR");
+
+        By acceptCookies = By.id("onetrust-accept-btn-handler");
+        wait.until(elementToBeClickable(acceptCookies));
+        driver.findElement(acceptCookies).click();
+       
+        By loginPageButton = By.id("header_login");
+        wait.until(elementToBeClickable(loginPageButton));
+        driver.findElement(loginPageButton).click();
+        
+
+        By searchInput = By.id("click_login_submit");
+        wait.until(presenceOfElementLocated(searchInput));
+    }
 
 }
