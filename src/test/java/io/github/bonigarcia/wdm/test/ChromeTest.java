@@ -59,7 +59,7 @@ public class ChromeTest {
 
     @Test
     // Test done by Miguel Zanela, for product quality class study purposes.
-    public void test_Miguel_Amazom() {
+    public void test_Miguel_Amazon() {
         WebDriverWait wait = new WebDriverWait(driver, 30);
         driver.get("https://www.amazon.com.br/");
 
