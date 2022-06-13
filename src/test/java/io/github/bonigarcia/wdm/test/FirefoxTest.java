@@ -28,28 +28,30 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 /**
- * Test with Chrome.
+ * Test with Firefox.
  *
- * @author Boni Garcia (boni.gg@gmail.com)
+ * @author Henrique Wilson Werkhausen Filho (git; henriquewwf)
+ * @BasedOn: Boni Garcia (boni.gg@gmail.com)
  * @since 1.0.0
  */
-public class ChromeTest {
+public class FirefoxTest {
 
     private WebDriver driver;
 
     @BeforeClass
     public static void setupClass() {
-        WebDriverManager.chromedriver().setup();
+        WebDriverManager.firefoxdriver().setup();
     }
 
     @Before
     public void setupTest() {
-        driver = new ChromeDriver();
+        driver = new FirefoxDriver();
     }
 
     @After
@@ -62,17 +64,21 @@ public class ChromeTest {
     @Test
     public void test() {
         // Your test code here. For example:
-        WebDriverWait wait = new WebDriverWait(driver, 30);
-        driver.get("https://en.wikipedia.org/wiki/Main_Page");
-        By searchInput = By.id("searchInput");
-        wait.until(presenceOfElementLocated(searchInput));
-        driver.findElement(searchInput).sendKeys("Software");
-        By searchButton = By.id("searchButton");
-        wait.until(elementToBeClickable(searchButton));
-        driver.findElement(searchButton).click();
 
-        wait.until(textToBePresentInElementLocated(By.tagName("body"),
-                "Computer software"));
+        String user = "henriquew";
+        String passwd = "@123456";
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+
+        driver.get("https://testpages.herokuapp.com/styled/basic-html-form-test.html");
+        By username= By.name("username");
+        wait.until(presenceOfElementLocated(username));
+        driver.findElement(username).sendKeys(user);
+
+        By submit = By.xpath("//input[@type='submit']");
+        wait.until(elementToBeClickable(submit));
+        driver.findElement(submit).click();
+
+        wait.until(textToBePresentInElementLocated(By.id("_valueusername"), user));
     }
 
 }
