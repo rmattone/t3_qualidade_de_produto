@@ -9,11 +9,12 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import io.github.bonigarcia.wdm.WebDriverManager;
+
 
 /**
  * Test with Chrome.
@@ -47,6 +48,8 @@ public class ChromeTest {
     // Test done by Eric Carlotto, for product quality class study purposes.
     public void test_eric_Financeone() {
         WebDriverWait wait = new WebDriverWait(driver, 30);
+        
+        driver.manage().window().setSize(new Dimension(1500,900));
         driver.get("https://financeone.com.br/conversor-de-moedas/");
 
         By searchInput = By.id("currency-value");
@@ -54,13 +57,15 @@ public class ChromeTest {
 
         driver.findElement(searchInput).sendKeys("2300");
         wait.until(textToBePresentInElementLocated(By.tagName("body"),
-                "50.008,86 BRL"));
+                " BRL"));
     }
 
     @Test
     // Test done by Miguel Zanela, for product quality class study purposes.
     public void test_Miguel_Amazon() {
         WebDriverWait wait = new WebDriverWait(driver, 30);
+
+        driver.manage().window().setSize(new Dimension(1500,900));
         driver.get("https://www.amazon.com.br/");
 
         By searchInput = By.id("twotabsearchtextbox");
@@ -79,8 +84,10 @@ public class ChromeTest {
     // Test done by Rafael Mattone, for product quality class study purposes.
     public void test_Rafael_Binance() {
         WebDriverWait wait = new WebDriverWait(driver, 30);
-        driver.get("https://www.binance.com/pt-BR");
 
+        driver.manage().window().setSize(new Dimension(1500,900));        
+        driver.get("https://www.binance.com/pt-BR");
+        
         By acceptCookies = By.id("onetrust-accept-btn-handler");
         wait.until(elementToBeClickable(acceptCookies));
         driver.findElement(acceptCookies).click();
@@ -89,7 +96,6 @@ public class ChromeTest {
         wait.until(elementToBeClickable(loginPageButton));
         driver.findElement(loginPageButton).click();
         
-
         By searchInput = By.id("click_login_submit");
         wait.until(presenceOfElementLocated(searchInput));
     }
