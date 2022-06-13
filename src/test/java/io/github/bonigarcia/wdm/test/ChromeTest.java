@@ -19,6 +19,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
  * Test with Chrome.
  *
  * @author Eric Carlotto (eric.carlottoitapiruba@gmail.com)
+ * @author Miguel Zanela (miguelzanela89@gmail.com)
  * @since 1.0.0
  */
 public class ChromeTest {
@@ -44,7 +45,7 @@ public class ChromeTest {
 
     @Test
     // Test done by Eric Carlotto, for product quality class study purposes.
-    public void test() {
+    public void test_eric_Financeone() {
         WebDriverWait wait = new WebDriverWait(driver, 30);
         driver.get("https://financeone.com.br/conversor-de-moedas/");
 
@@ -54,6 +55,24 @@ public class ChromeTest {
         driver.findElement(searchInput).sendKeys("2300");
         wait.until(textToBePresentInElementLocated(By.tagName("body"),
                 "50.008,86 BRL"));
+    }
+
+    @Test
+    // Test done by Miguel Zanela, for product quality class study purposes.
+    public void test_Miguel_Amazom() {
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        driver.get("https://www.amazon.com.br/");
+
+        By searchInput = By.id("twotabsearchtextbox");
+        wait.until(presenceOfElementLocated(searchInput));        
+        driver.findElement(searchInput).sendKeys("Samsung S22");
+
+        By searchButton = By.id("nav-search-submit-button");
+        wait.until(elementToBeClickable(searchButton));
+        driver.findElement(searchButton).click();
+
+        wait.until(textToBePresentInElementLocated(By.tagName("body"),
+                "S22"));
     }
 
 }
