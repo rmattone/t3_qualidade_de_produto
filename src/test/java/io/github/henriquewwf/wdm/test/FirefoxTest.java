@@ -38,6 +38,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
  *
  * @author Henrique Wilson Werkhausen Filho (git; henriquewwf)
  * @BasedOn: Boni Garcia (boni.gg@gmail.com)
+ * @OriginalSource: https://github.com/bonigarcia/webdrivermanager
  * @since 1.0.0
  */
 public class FirefoxTest {
@@ -66,7 +67,7 @@ public class FirefoxTest {
         // Your test code here. For example:
 
         String user = "henriquew";
-        String passwd = "@123456";
+
         WebDriverWait wait = new WebDriverWait(driver, 30);
 
         driver.get("https://testpages.herokuapp.com/styled/basic-html-form-test.html");
