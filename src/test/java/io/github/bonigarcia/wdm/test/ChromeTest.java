@@ -100,4 +100,25 @@ public class ChromeTest {
         wait.until(presenceOfElementLocated(searchInput));
     }
 
+    @Test
+    public void test_Henrique() {
+        // Your test code here. For example:
+
+        String user = "henriquew";
+
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+
+        driver.get("https://testpages.herokuapp.com/styled/basic-html-form-test.html");
+        By username= By.name("username");
+        wait.until(presenceOfElementLocated(username));
+        driver.findElement(username).sendKeys(user);
+
+        By submit = By.xpath("//input[@type='submit']");
+        wait.until(elementToBeClickable(submit));
+        driver.findElement(submit).click();
+
+        wait.until(textToBePresentInElementLocated(By.id("_valueusername"), user));
+    }
+
+
 }
